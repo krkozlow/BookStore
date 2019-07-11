@@ -1,4 +1,5 @@
-﻿using DBookStore.Client.Api.Repository;
+﻿using DBookStore.Client.Api.Hubs;
+using DBookStore.Client.Api.Repository;
 using DBookStore.Common.Commands;
 using DBookStore.Common.Contracts;
 using Newtonsoft.Json;
@@ -33,6 +34,9 @@ namespace DBookStore.Client.Api.CommandHandlers
                 Name = result.Name,
                 Release = result.Release
             });
+
+            var hub = new NotificationHub();
+            await hub.NotifyClient($"{DateTime.Now.Ticks} BookCreatedCommandHandler");
         }
     }
 }

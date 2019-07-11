@@ -5,15 +5,17 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FEB11581-C75D-433A-9997-DA547B54128B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Book.Service", "src\DBookStore.Book.Service\DBookStore.Book.Service.csproj", "{8BC74B42-8C0E-4A74-856C-F095E071252C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBookStore.Book.Service", "src\DBookStore.Book.Service\DBookStore.Book.Service.csproj", "{8BC74B42-8C0E-4A74-856C-F095E071252C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Identity.Service", "src\DBookStore.Identity.Service\DBookStore.Identity.Service.csproj", "{260AC204-88ED-43D4-BB41-ED976DD51BAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBookStore.Identity.Service", "src\DBookStore.Identity.Service\DBookStore.Identity.Service.csproj", "{260AC204-88ED-43D4-BB41-ED976DD51BAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Reservation.Service", "src\DBookStore.Reservation.Service\DBookStore.Reservation.Service.csproj", "{6AD0594D-D36E-478F-B6E6-F60D746E8F51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBookStore.Reservation.Service", "src\DBookStore.Reservation.Service\DBookStore.Reservation.Service.csproj", "{6AD0594D-D36E-478F-B6E6-F60D746E8F51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Client.Api", "src\DBookStore.Client.Api\DBookStore.Client.Api.csproj", "{DB924301-4B7F-499A-83AB-DC6C454361C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBookStore.Client.Api", "src\DBookStore.Client.Api\DBookStore.Client.Api.csproj", "{DB924301-4B7F-499A-83AB-DC6C454361C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Common", "src\DBookStore.Common\DBookStore.Common.csproj", "{030C1361-8E27-40F0-9256-79E78C3DF062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBookStore.Common", "src\DBookStore.Common\DBookStore.Common.csproj", "{030C1361-8E27-40F0-9256-79E78C3DF062}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Client", "src\DBookStore.Client\DBookStore.Client.csproj", "{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8BC74B42-8C0E-4A74-856C-F095E071252C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -88,6 +87,21 @@ Global
 		{030C1361-8E27-40F0-9256-79E78C3DF062}.Release|x64.Build.0 = Release|Any CPU
 		{030C1361-8E27-40F0-9256-79E78C3DF062}.Release|x86.ActiveCfg = Release|Any CPU
 		{030C1361-8E27-40F0-9256-79E78C3DF062}.Release|x86.Build.0 = Release|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Debug|x64.Build.0 = Debug|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Debug|x86.Build.0 = Debug|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Release|x64.ActiveCfg = Release|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Release|x64.Build.0 = Release|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Release|x86.ActiveCfg = Release|Any CPU
+		{1B047A91-9CD5-4183-9E5E-7A5A1D695E68}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8BC74B42-8C0E-4A74-856C-F095E071252C} = {FEB11581-C75D-433A-9997-DA547B54128B}
@@ -95,5 +109,8 @@ Global
 		{6AD0594D-D36E-478F-B6E6-F60D746E8F51} = {FEB11581-C75D-433A-9997-DA547B54128B}
 		{DB924301-4B7F-499A-83AB-DC6C454361C4} = {FEB11581-C75D-433A-9997-DA547B54128B}
 		{030C1361-8E27-40F0-9256-79E78C3DF062} = {FEB11581-C75D-433A-9997-DA547B54128B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4C1D4BE-EA36-45DF-9926-2EBC7D064002}
 	EndGlobalSection
 EndGlobal
