@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using DBookStore.Client.Api.Hubs;
 
 namespace DBookStore.Client.Api
 {
@@ -35,6 +36,7 @@ namespace DBookStore.Client.Api
             services.AddMongoDbProvider<BookDto>(Configuration);
             services.AddRabbitMq();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +44,10 @@ namespace DBookStore.Client.Api
         {
             app.UseMvc();
             app.AddHandler<BookCreated>();
+            app.UseSignalR(hubs => 
+            {
+                hubs.MapHub<NotificationHub>("/notification");
+            });
         }
     }
 }
