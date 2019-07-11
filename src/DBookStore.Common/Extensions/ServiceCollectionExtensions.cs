@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DBookStore.Common.DbProvider;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RawRabbit;
 using RawRabbit.Configuration;
@@ -11,7 +12,7 @@ namespace DBookStore.Common.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddRabbitMq(this IServiceCollection services, IConfigurationSection section)
+        public static void AddRabbitMq(this IServiceCollection services)
         {
             var options = new RawRabbitConfiguration
             {
@@ -23,6 +24,11 @@ namespace DBookStore.Common.Extensions
             };
             var client = BusClientFactory.CreateDefault(options);
             services.AddSingleton<IBusClient>(_ => client);
+        }
+
+        public static void AddMongoDbProvider<T>(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped<IMongoDbProvider<T>>(_ => new MongoDbProvider<T>(configuration));
         }
     }
 }

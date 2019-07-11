@@ -9,7 +9,7 @@ using DBookStore.Common.DbProvider;
 
 namespace DBookStore.Book.Service.Repository
 {
-    public class BookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly IMongoCollection<Domain.Book> _books;
 

@@ -30,7 +30,8 @@ namespace DBookStore.Client.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ICommandHandler<BookCreated>, BookCreatedCommandHandler>();
-            services.AddRabbitMq(Configuration.GetSection("rabbitmq"));
+            services.AddMongoDbProvider<BookDto>(Configuration);
+            services.AddRabbitMq();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

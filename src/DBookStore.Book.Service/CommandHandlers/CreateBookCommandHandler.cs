@@ -1,4 +1,5 @@
-﻿using DBookStore.Common.Commands;
+﻿using DBookStore.Book.Service.Domain;
+using DBookStore.Common.Commands;
 using DBookStore.Common.Contracts;
 using RawRabbit;
 using System;
@@ -11,21 +12,30 @@ namespace DBookStore.Book.Service.CommandHandlers
     public class CreateBookCommandHandler : ICommandHandler<CreateBook>
     {
         private readonly IBusClient _bus;
-        public CreateBookCommandHandler(IBusClient bus)
+        private readonly IBookRepository _repository;
+
+        public CreateBookCommandHandler(IBusClient bus, IBookRepository repository)
         {
             _bus = bus;
+            _repository = repository;
         }
 
         public async Task Handle(CreateBook command)
         {
             Console.WriteLine($"{DateTime.Now.Ticks} CreateBookCommandHandler");
-            BookCreated book = new BookCreated
+            var bookId = Guid.NewGuid();
+            await _repository.Add(new Domain.Book
             {
-                Id = Guid.NewGuid(),
-                ResourceUrl = $"https://localhost:5001/api/book/"
-            };
-            //save to books db
-            await _bus.PublishAsync(book);
+                Id = bookId,
+                Name = command.Name,
+                Release = command.Release
+            });
+
+            await _bus.PublishAsync(new BookCreated
+            {
+                Id = bookId,
+                ResourceUrl = $"https://localhost:44352/api/book/"
+            });
         }
     }
 }
