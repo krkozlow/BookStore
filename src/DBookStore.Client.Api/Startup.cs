@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DBookStore.Client.Api.CommandHandlers;
+using DBookStore.Client.Api.Repository;
 using DBookStore.Common.Commands;
 using DBookStore.Common.Contracts;
 using DBookStore.Common.Extensions;
@@ -29,6 +30,7 @@ namespace DBookStore.Client.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICommandHandler<BookCreated>, BookCreatedCommandHandler>();
             services.AddMongoDbProvider<BookDto>(Configuration);
             services.AddRabbitMq();

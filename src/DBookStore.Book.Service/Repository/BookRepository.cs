@@ -20,7 +20,7 @@ namespace DBookStore.Book.Service.Repository
 
         public async Task<Domain.Book> Get(Guid id)
         {
-            var result = await _books.FindAsync(book => book.Id == id);
+            var result = await _books.FindAsync(book => book.Id.Equals(id));
             return await result.FirstOrDefaultAsync();
         }
 

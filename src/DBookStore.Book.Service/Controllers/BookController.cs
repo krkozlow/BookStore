@@ -18,7 +18,13 @@ namespace DBookStore.Book.Service.Controllers
             _repository = repository;
         }
 
-        [HttpGet("id")]
+        [HttpGet]
+        public async Task<ActionResult<Domain.Book>> Get()
+        {
+            return Ok(new Domain.Book());
+        }
+
+        [HttpGet("{id}")]
         public async Task<ActionResult<Domain.Book>> Get(Guid id)
         {
             try

@@ -28,7 +28,7 @@ namespace DBookStore.Common.Extensions
 
         public static void AddMongoDbProvider<T>(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IMongoDbProvider<T>>(_ => new MongoDbProvider<T>(configuration));
+            services.AddTransient<IMongoDbProvider<T>>(_ => new MongoDbProvider<T>(configuration));
         }
     }
 }
