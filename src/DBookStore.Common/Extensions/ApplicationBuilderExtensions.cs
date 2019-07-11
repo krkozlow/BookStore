@@ -9,14 +9,17 @@ namespace DBookStore.Common.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
-        public static IApplicationBuilder AddHandler<T>(this IApplicationBuilder app, IBusClient client)
+        public static IApplicationBuilder AddHandler<T>(this IApplicationBuilder app)
             where T : ICommand
         {
+            if (!(app.ApplicationServices.GetService(typeof(IBusClient)) is IBusClient busClient))
+                throw new NullReferenceException();
+
             if (!(app.ApplicationServices.GetService(typeof(ICommandHandler<T>)) is ICommandHandler<T> handler))
                 throw new NullReferenceException();
 
-                client
-                .SubscribeAsync<T>(async (msg, context) =>
+            busClient
+            .SubscribeAsync<T>(async (msg, context) =>
                 {
                     await handler.Handle(msg);
                 });

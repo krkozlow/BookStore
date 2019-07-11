@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DBookStore.Client.Api.CommandHandlers;
+using DBookStore.Common.Commands;
+using DBookStore.Common.Contracts;
 using DBookStore.Common.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,7 +29,8 @@ namespace DBookStore.Client.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRabbitMq();
+            services.AddTransient<ICommandHandler<BookCreated>, BookCreatedCommandHandler>();
+            services.AddRabbitMq(Configuration.GetSection("rabbitmq"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -34,6 +38,7 @@ namespace DBookStore.Client.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseMvc();
+            app.AddHandler<BookCreated>();
         }
     }
 }

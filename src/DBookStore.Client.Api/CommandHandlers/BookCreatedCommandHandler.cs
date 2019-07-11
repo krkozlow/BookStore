@@ -9,9 +9,9 @@ namespace DBookStore.Client.Api.CommandHandlers
 {
     public class BookCreatedCommandHandler : ICommandHandler<BookCreated>
     {
-        public Task Handle(BookCreated command)
+        public async Task Handle(BookCreated command)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"{DateTime.Now.Ticks} BookCreatedCommandHandler");
         }
     }
 }

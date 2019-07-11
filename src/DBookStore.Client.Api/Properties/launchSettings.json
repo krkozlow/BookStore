@@ -19,9 +19,9 @@
     },
     "DBookStore.Client.Api": {
       "commandName": "Project",
-      "launchBrowser": false,
+      "launchBrowser": true,
       "launchUrl": "api/values",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5051",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
