@@ -13,20 +13,14 @@ namespace DBookStore.Common.Extensions
     {
         public static void AddRabbitMq(this IServiceCollection services, IConfigurationSection section)
         {
-            //var options = new RawRabbitConfiguration
-            //{
-            //    Username = "guest",
-            //    Password = "guest",
-            //    Port = 5672,
-            //    VirtualHost = "/",
-            //    Hostnames = { "localhost" }
-            //};
-            //var client = BusClientFactory.CreateDefault(options);
-            //services.AddSingleton<IBusClient>(_ => client);
-
-            var options = new RawRabbitConfiguration();
-            section.Bind(options);
-
+            var options = new RawRabbitConfiguration
+            {
+                Username = "guest",
+                Password = "guest",
+                Port = 5672,
+                VirtualHost = "/",
+                Hostnames = { "localhost" }
+            };
             var client = BusClientFactory.CreateDefault(options);
             services.AddSingleton<IBusClient>(_ => client);
         }
