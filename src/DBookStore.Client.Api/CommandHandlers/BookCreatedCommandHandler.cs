@@ -1,5 +1,6 @@
 ﻿using DBookStore.Client.Api.Hubs;
 using DBookStore.Client.Api.Repository;
+using DBookStore.Client.Api.Service;
 using DBookStore.Common.Commands;
 using DBookStore.Common.Contracts;
 using Microsoft.AspNetCore.SignalR;
@@ -16,18 +17,19 @@ namespace DBookStore.Client.Api.CommandHandlers
     {
         private readonly IBookRepository _repository;
         private readonly HttpClient _client;
-        private readonly IHubContext<NotificationHub> _hubContext;
+        private readonly INotificationService _notificationService;
 
-        public BookCreatedCommandHandler(IBookRepository repository, IHubContext<NotificationHub> hubContext)
+        public BookCreatedCommandHandler(IBookRepository repository, INotificationService notificationService)
         {
             _repository = repository;
-            _hubContext = hubContext;
+            _notificationService = notificationService;
             _client = new HttpClient();
         }
 
         public async Task Handle(BookCreated command)
         {
-            Console.WriteLine($"{DateTime.Now.Ticks} BookCreatedCommandHandler");
+            var message = $"{DateTime.Now.Ticks} BookCreatedCommandHandler";
+            Console.WriteLine(message);
             var response = await _client.GetStringAsync(command.ResourceUrl + command.Id);
             var result = JsonConvert.DeserializeObject<Book.Service.Domain.Book>(response);
 
@@ -38,7 +40,7 @@ namespace DBookStore.Client.Api.CommandHandlers
                 Release = result.Release
             });
 
-            await _hubContext.Clients.All.SendAsync("HandleNotification", $"{DateTime.Now.Ticks} BookCreatedCommandHandler");
+            await _notificationService.NotifyAllClients(message);
         }
     }
 }

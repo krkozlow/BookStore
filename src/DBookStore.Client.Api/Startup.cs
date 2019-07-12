@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using DBookStore.Client.Api.Hubs;
+using DBookStore.Client.Api.Service;
 
 namespace DBookStore.Client.Api
 {
@@ -31,6 +32,7 @@ namespace DBookStore.Client.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICommandHandler<BookCreated>, BookCreatedCommandHandler>();
             services.AddMongoDbProvider<BookDto>(Configuration);
