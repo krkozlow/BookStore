@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace DBookStore.Book.Service.Domain
 {
-    public interface IBookRepository
+    public class Review
     {
-        Task<Book> Get(Guid id);
-
-        Task Add(Book book);
-        Task Update(Book book);
+        public Guid UserId { get; set; }
+        public decimal Rating { get; set; }
+        public string Description { get; set; }
     }
 }

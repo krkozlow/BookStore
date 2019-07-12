@@ -26,5 +26,10 @@ namespace DBookStore.Client.Api.Repository
             var result = await _books.FindAsync(book => book.Id == id);
             return await result.FirstOrDefaultAsync();
         }
+
+        public async Task Update(BookDto book)
+        {
+            await _books.ReplaceOneAsync(x => x.Id == book.Id, book);
+        }
     }
 }

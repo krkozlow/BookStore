@@ -9,5 +9,6 @@ namespace DBookStore.Client.Api.Repository
     {
         Task<BookDto> Get(Guid id);
         Task Add(BookDto book);
+        Task Update(BookDto book);
     }
 }

@@ -10,5 +10,7 @@ namespace DBookStore.Book.Service.Domain
         public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime Release { get; set; }
+        public string Genre { get; set; }
+        public IList<Review> Reviews { get; set; }
     }
 }

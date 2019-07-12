@@ -5,11 +5,9 @@ using System.Text;
 
 namespace DBookStore.Common.Contracts
 {
-    public class CreateBook : ICommand
+    public class ReviewAdded : ICommand
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public DateTime Release { get; set; }
-        public string Genre { get; set; }
+        public string ResourceUrl { get; set; }
     }
 }

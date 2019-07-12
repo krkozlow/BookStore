@@ -28,5 +28,10 @@ namespace DBookStore.Book.Service.Repository
         {
             await _books.InsertOneAsync(book);
         }
+
+        public async Task Update(Domain.Book book)
+        {
+            await _books.ReplaceOneAsync(x => x.Id == book.Id, book);
+        }
     }
 }

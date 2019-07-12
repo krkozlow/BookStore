@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using DBookStore.Client.Api.Hubs;
 using DBookStore.Client.Api.Service;
+using DBookStore.Book.Service.CommandHandlers;
 
 namespace DBookStore.Client.Api
 {
@@ -35,6 +36,7 @@ namespace DBookStore.Client.Api
             services.AddTransient<INotificationService, NotificationService>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICommandHandler<BookCreated>, BookCreatedCommandHandler>();
+            services.AddTransient<ICommandHandler<ReviewAdded>, ReviewAddedCommandHandler>();
             services.AddMongoDbProvider<BookDto>(Configuration);
             services.AddRabbitMq();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -46,6 +48,7 @@ namespace DBookStore.Client.Api
         {
             app.UseMvc();
             app.AddHandler<BookCreated>();
+            app.AddHandler<ReviewAdded>();
             app.UseSignalR(hubs => 
             {
                 hubs.MapHub<NotificationHub>("/notification");

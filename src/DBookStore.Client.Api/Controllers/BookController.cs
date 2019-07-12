@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DBookStore.Client.Api.Models;
 using DBookStore.Common.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using RawRabbit;
@@ -19,27 +20,6 @@ namespace DBookStore.Client.Api.Controllers
             _bus = bus;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            try
-            {
-                CreateBook book = new CreateBook
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Test name",
-                    Release = DateTime.UtcNow
-                };
-                await _bus.PublishAsync(book);
-
-                return Accepted();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex);
-            }
-        }
-
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] BookDto model)
         {
@@ -47,9 +27,24 @@ namespace DBookStore.Client.Api.Controllers
             {
                 Id = Guid.NewGuid(),
                 Name = model.Name,
-                Release = model.Release.ToUniversalTime()
+                Release = model.Release.ToUniversalTime(),
+                Genre = model.Genre
             };
             await _bus.PublishAsync(book);
+
+            return Accepted();
+        }
+
+        [HttpPost("{bookId}")]
+        public async Task<IActionResult> Post(Guid bookId, [FromBody] ReviewDto model)
+        {
+            AddReview review = new AddReview
+            {
+                BookId = bookId,
+                Rating = model.Rating,
+                Description = model.Description
+            };
+            await _bus.PublishAsync(review);
 
             return Accepted();
         }

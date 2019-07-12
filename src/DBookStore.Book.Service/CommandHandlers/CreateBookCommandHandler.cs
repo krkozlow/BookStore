@@ -28,7 +28,8 @@ namespace DBookStore.Book.Service.CommandHandlers
             {
                 Id = bookId,
                 Name = command.Name,
-                Release = command.Release
+                Release = command.Release,
+                Genre = command.Genre
             });
 
             await _bus.PublishAsync(new BookCreated
