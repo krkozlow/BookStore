@@ -2,6 +2,7 @@
 using DBookStore.Client.Api.Repository;
 using DBookStore.Common.Commands;
 using DBookStore.Common.Contracts;
+using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace DBookStore.Client.Api.CommandHandlers
     {
         private readonly IBookRepository _repository;
         private readonly HttpClient _client;
+        private readonly IHubContext<NotificationHub> _hubContext;
 
-        public BookCreatedCommandHandler(IBookRepository repository)
+        public BookCreatedCommandHandler(IBookRepository repository, IHubContext<NotificationHub> hubContext)
         {
             _repository = repository;
+            _hubContext = hubContext;
             _client = new HttpClient();
         }
 
@@ -35,8 +38,7 @@ namespace DBookStore.Client.Api.CommandHandlers
                 Release = result.Release
             });
 
-            var hub = new NotificationHub();
-            await hub.NotifyClient($"{DateTime.Now.Ticks} BookCreatedCommandHandler");
+            await _hubContext.Clients.All.SendAsync("HandleNotification", $"{DateTime.Now.Ticks} BookCreatedCommandHandler");
         }
     }
 }
