@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DBookStore.Book.Service.CommandHandlers;
 using DBookStore.Book.Service.Domain;
+using DBookStore.Book.Service.Service;
 using DBookStore.Common.Commands;
 using DBookStore.Common.Contracts;
 using DBookStore.Common.Extensions;
@@ -30,6 +31,7 @@ namespace DBookStore.Book.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IBookService, BookService>();
             services.AddTransient<IBookRepository, Repository.BookRepository>();
             services.AddTransient<ICommandHandler<AddReview>, AddReviewCommandHandler>();
             services.AddTransient<ICommandHandler<CreateBook>, CreateBookCommandHandler>();

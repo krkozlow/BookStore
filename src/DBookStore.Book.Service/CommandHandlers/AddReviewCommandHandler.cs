@@ -31,7 +31,8 @@ namespace DBookStore.Book.Service.CommandHandlers
 
             ReviewAdded reviewAdded = new ReviewAdded
             {
-                Message = $"{DateTime.UtcNow.Ticks} Review added to {command.BookId}"
+                Id = command.BookId,
+                ResourceUrl = $"https://localhost:5001/api/book/"
             };
             await _bus.PublishAsync(reviewAdded);
         }

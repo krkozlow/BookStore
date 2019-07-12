@@ -18,6 +18,10 @@ namespace DBookStore.Book.Service.Service
         public async Task AddReview(Guid bookId, Review review)
         {
             Domain.Book book = await _repository.Get(bookId);
+            if (book.Reviews == null)
+            {
+                book.Reviews = new List<Review>();
+            }
             book.Reviews.Add(review);
 
             await _repository.Update(book);

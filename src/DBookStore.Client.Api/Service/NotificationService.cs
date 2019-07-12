@@ -18,12 +18,12 @@ namespace DBookStore.Client.Api.Service
 
         public async Task NotifyClient(string connectionId, string message)
         {
-            await _hubContext.Clients.Client(connectionId).SendAsync(message);
+            await _hubContext.Clients.Client(connectionId).SendAsync("HandleNotification", message);
         }
 
         public async Task NotifyAllClients(string message)
         {
-            await _hubContext.Clients.All.SendAsync(message);
+            await _hubContext.Clients.All.SendAsync("HandleNotification", message);
         }
     }
 }
