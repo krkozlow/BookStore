@@ -1,14 +1,15 @@
 ﻿using DBookStore.Common.Commands;
+using DBookStore.Common.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace DBookStore.Saga.Sagas
+namespace DBookStore.Common.Contracts
 {
     public class OrderSagaTransaction : ICommand
     {
         public Guid Id { get; set; }
-        public SagaState State { get; set; }
+        public TransactionState State { get; set; }
+        public Guid BookId { get; set; }
     }
 }

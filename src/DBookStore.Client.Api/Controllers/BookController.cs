@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DBookStore.Client.Api.Models;
 using DBookStore.Common.Contracts;
+using DBookStore.Common.Models;
 using Microsoft.AspNetCore.Mvc;
 using RawRabbit;
 
@@ -49,17 +50,18 @@ namespace DBookStore.Client.Api.Controllers
             return Accepted(review);
         }
 
-        [HttpPost("[action]/{bookId}")]
+        [HttpGet("[action]/{bookId}")]
         public async Task<IActionResult> Order(Guid bookId)
         {
-            OrderDto order = new OrderDto
+            OrderSagaTransaction orderSagaTransaction = new OrderSagaTransaction
             {
-                BookId = bookId,
-                Id = Guid.NewGuid()
+                Id = Guid.NewGuid(),
+                State = TransactionState.Pending,
+                BookId = bookId
             };
-            await _bus.PublishAsync(order);
+            await _bus.PublishAsync(orderSagaTransaction);
 
-            return Accepted(order);
+            return Accepted(orderSagaTransaction);
         }
     }
 }

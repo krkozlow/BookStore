@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 
-namespace DBookStore.Saga.Sagas
+namespace DBookStore.Common.Models
 {
-    public enum SagaState
+    public enum TransactionState
     {
         Pending,
         Finished,
