@@ -32,7 +32,7 @@ namespace DBookStore.Client.Api.Controllers
             };
             await _bus.PublishAsync(book);
 
-            return Accepted();
+            return Accepted(book);
         }
 
         [HttpPost("{bookId}")]
@@ -46,7 +46,20 @@ namespace DBookStore.Client.Api.Controllers
             };
             await _bus.PublishAsync(review);
 
-            return Accepted();
+            return Accepted(review);
+        }
+
+        [HttpPost("[action]/{bookId}")]
+        public async Task<IActionResult> Order(Guid bookId)
+        {
+            OrderDto order = new OrderDto
+            {
+                BookId = bookId,
+                Id = Guid.NewGuid()
+            };
+            await _bus.PublishAsync(order);
+
+            return Accepted(order);
         }
     }
 }

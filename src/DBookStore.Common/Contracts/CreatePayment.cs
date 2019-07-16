@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DBookStore.Common.Contracts
 {
-    class CreatePayment : ICommand
+    public class CreatePayment : ICommand
     {
     }
 }

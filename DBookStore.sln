@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Payment.Service"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Order.Service", "src\DBookStore.Order.Service\DBookStore.Order.Service.csproj", "{921288A2-03E3-4CB7-84DC-8A7D8370AD8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBookStore.Saga", "src\DBookStore.Saga\DBookStore.Saga.csproj", "{41AC2FDA-2422-462D-ADAD-680411927AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,18 @@ Global
 		{921288A2-03E3-4CB7-84DC-8A7D8370AD8C}.Release|x64.Build.0 = Release|Any CPU
 		{921288A2-03E3-4CB7-84DC-8A7D8370AD8C}.Release|x86.ActiveCfg = Release|Any CPU
 		{921288A2-03E3-4CB7-84DC-8A7D8370AD8C}.Release|x86.Build.0 = Release|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Debug|x64.Build.0 = Debug|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Debug|x86.Build.0 = Debug|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Release|x64.ActiveCfg = Release|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Release|x64.Build.0 = Release|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Release|x86.ActiveCfg = Release|Any CPU
+		{41AC2FDA-2422-462D-ADAD-680411927AE0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,6 +153,7 @@ Global
 		{32ABFDAA-1560-42E5-908B-8E7F7F981198} = {FEB11581-C75D-433A-9997-DA547B54128B}
 		{75C2855B-B30B-4892-8C79-DCE333BCB14A} = {FEB11581-C75D-433A-9997-DA547B54128B}
 		{921288A2-03E3-4CB7-84DC-8A7D8370AD8C} = {FEB11581-C75D-433A-9997-DA547B54128B}
+		{41AC2FDA-2422-462D-ADAD-680411927AE0} = {FEB11581-C75D-433A-9997-DA547B54128B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B4C1D4BE-EA36-45DF-9926-2EBC7D064002}
