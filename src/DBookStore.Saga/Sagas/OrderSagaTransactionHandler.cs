@@ -3,6 +3,7 @@ using DBookStore.Common.Contracts;
 using DBookStore.Common.Models;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
+using RawRabbit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace DBookStore.Saga.Sagas
     public class OrderSagaTransactionHandler : ICommandHandler<OrderSagaTransaction>
     {
         private readonly IDistributedCache _cache;
+        private readonly IBusClient _bus;
 
-        public OrderSagaTransactionHandler(IDistributedCache cache)
+        public OrderSagaTransactionHandler(IDistributedCache cache, IBusClient bus)
         {
             _cache = cache;
+            _bus = bus;
         }
 
         public async Task Handle(OrderSagaTransaction command)
@@ -34,6 +37,14 @@ namespace DBookStore.Saga.Sagas
                 var value = JsonConvert.SerializeObject(transaction).ToString();
                 await _cache.SetStringAsync(key, value);
             }
+
+            CreateOrder order = new CreateOrder
+            {
+                BookId = command.BookId,
+                TransactionId = command.Id
+            };
+
+            await _bus.PublishAsync(order);
         }
     }
 }

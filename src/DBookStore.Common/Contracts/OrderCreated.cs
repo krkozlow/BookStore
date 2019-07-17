@@ -7,5 +7,7 @@ namespace DBookStore.Common.Contracts
 {
     public class OrderCreated : ICommand
     {
+        public Guid OrderId { get; set; }
+        public Guid TransactionId { get; set; }
     }
 }
