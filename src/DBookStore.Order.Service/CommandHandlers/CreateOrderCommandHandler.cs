@@ -27,16 +27,27 @@ namespace DBookStore.Order.Service.CommandHandlers
                 Id = Guid.NewGuid(),
                 BookId = command.BookId
             };
-
-            await _repository.Add(order);
-
-            OrderCreated orderCreated = new OrderCreated
+            try
             {
-                OrderId = order.Id,
-                TransactionId = command.TransactionId
-            };
+                await _repository.Add(order);
 
-            await _bus.PublishAsync(orderCreated);
+                OrderCreated orderCreated = new OrderCreated
+                {
+                    OrderId = order.Id,
+                    TransactionId = command.TransactionId
+                };
+
+                await _bus.PublishAsync(orderCreated);
+            }
+            catch (Exception exception)
+            {
+                CreateOrderFailed failed = new CreateOrderFailed
+                {
+                    OrderId = order.Id
+                };
+
+                await _bus.PublishAsync(failed);
+            }
         }
     }
 }

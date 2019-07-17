@@ -8,7 +8,7 @@ namespace DBookStore.Payment.Service.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class PaymentController : ControllerBase
     {
         // GET api/values
         [HttpGet]

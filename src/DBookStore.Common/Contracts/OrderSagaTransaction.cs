@@ -11,5 +11,8 @@ namespace DBookStore.Common.Contracts
         public Guid Id { get; set; }
         public TransactionState State { get; set; }
         public Guid BookId { get; set; }
+        public Guid OrderId { get; set; }
+        public Guid PaymentId { get; set; }
+        public Guid DeliveryId { get; set; }
     }
 }
