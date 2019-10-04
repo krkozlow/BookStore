@@ -43,7 +43,8 @@ namespace DBookStore.Order.Service.CommandHandlers
             {
                 CreateOrderFailed failed = new CreateOrderFailed
                 {
-                    OrderId = order.Id
+                    OrderId = order.Id,
+                    Message = exception.Message
                 };
 
                 await _bus.PublishAsync(failed);

@@ -8,5 +8,6 @@ namespace DBookStore.Common.Contracts
     public class CreateOrderFailed : ICommand
     {
         public Guid OrderId { get; set; }
+        public string Message { get; set; }
     }
 }
