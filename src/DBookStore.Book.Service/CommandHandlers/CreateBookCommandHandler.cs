@@ -35,7 +35,7 @@ namespace DBookStore.Book.Service.CommandHandlers
             await _bus.PublishAsync(new BookCreated
             {
                 Id = bookId,
-                ResourceUrl = $"http://localhost:5000/api/book/"
+                ResourceUrl = $"http://localhost:5002/api/book/"
             });
         }
     }

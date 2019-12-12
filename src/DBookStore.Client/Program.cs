@@ -11,7 +11,7 @@ namespace DBookStore.Client
         {
             Console.WriteLine("Hello World!");
             HubConnection connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5051/notification")
+                .WithUrl("http://localhost:5001/notification")
                 .Build();
             connection.On<string>("HandleNotification", (message) =>
             {
